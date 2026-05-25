@@ -118,19 +118,12 @@ function AppInner() {
 
   return (
     <div>
+      {/* Верхняя навигация — сайт */}
       <div className="header-wrapper">
         <header className="header-card">
-          <div className="logo">artiklo<span className="logo-dot">.</span>de</div>
-          <nav className="nav-links">
-            {TABS.map(id => (
-              <button
-                key={id}
-                className={`nav-link${tab === id ? ' active' : ''}`}
-                onClick={() => setTab(id)}
-              >
-                {{ search: t.tabSearch, quiz: t.tabQuiz, stats: t.tabStats }[id]}
-              </button>
-            ))}
+          <a href="/" className="logo">artiklo<span className="logo-dot">.</span>de</a>
+          <nav className="site-nav">
+            <a href="/ueber-artiklo" className="site-nav-link">Über Artiklo</a>
           </nav>
           <div className="header-right">
             <LangDropdown lang={lang} setLang={setLang} />
@@ -140,6 +133,21 @@ function AppInner() {
             }
           </div>
         </header>
+      </div>
+
+      {/* Переключатель разделов приложения */}
+      <div className="app-tabs-wrapper">
+        <div className="app-tabs">
+          {TABS.map(id => (
+            <button
+              key={id}
+              className={`app-tab${tab === id ? ' active' : ''}`}
+              onClick={() => setTab(id)}
+            >
+              {{ search: t.tabSearch, quiz: t.tabQuiz, stats: t.tabStats }[id]}
+            </button>
+          ))}
+        </div>
       </div>
 
       <div className="app">
